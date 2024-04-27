@@ -1,12 +1,14 @@
 package com.metehan.ImageService.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Data
+@Builder
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +17,6 @@ public class Image {
     private String name;
 
     private String tag;
-
-    private String imageId;
-
-    private long size;
 
     private LocalDateTime creationTimestamp;
 
