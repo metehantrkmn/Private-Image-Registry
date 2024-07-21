@@ -1,6 +1,5 @@
 package com.metehan.ImageService.Entity;
 
-import com.metehan.ImageService.Entity.Image;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,6 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "\"USER\"")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,11 @@ public class User {
 
     private String username;
 
-    private String email;
+    @OneToMany(mappedBy = "creator")
+    private List<ImageRepository> repositories;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Image> images;
+    @ManyToMany(mappedBy = "collaborators")
+    private List<ImageRepository> collaboratingRepositories;
 
     // Constructors, getters, and setters
 }

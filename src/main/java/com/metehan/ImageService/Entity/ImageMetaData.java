@@ -9,18 +9,21 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Builder
-public class Image {
+public class ImageMetaData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "userID")
+    private User user;
 
     private String tag;
 
     private LocalDateTime creationTimestamp;
 
     @ManyToOne
+    @JoinColumn(name = "repositoryID")
     private ImageRepository repository;
 
     // Constructors, getters, and setters

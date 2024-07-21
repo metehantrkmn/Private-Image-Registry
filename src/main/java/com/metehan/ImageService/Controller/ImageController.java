@@ -1,9 +1,7 @@
 package com.metehan.ImageService.Controller;
 
 
-import com.metehan.ImageService.Controller.Request.PushImageRequest;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ImageController {
 
-
     @PostMapping("v1/image/push")
-    public ResponseEntity handleImagePush(@RequestBody PushImageRequest request){
-
+    public ResponseEntity handleImagePush(@RequestBody byte[] image){
+        System.out.println(image);
         return ResponseEntity.ok().body("ok");
     }
 
